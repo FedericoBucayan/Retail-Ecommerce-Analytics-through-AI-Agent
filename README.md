@@ -93,7 +93,7 @@ The public data search engine used to find the initial retail records, which wer
 
 1. Clone or download this repository to your computer:
    ```bash
-   git clone https://github.com/FedericoBucayan/Retail-Ecommerce-Analytics.git
+   git clone https://github.com/FedericoBucayan/Retail-Ecommerce-Analytics-through-AI-Agent.git
    ```
 
 2. Open the project in Power BI Desktop:
