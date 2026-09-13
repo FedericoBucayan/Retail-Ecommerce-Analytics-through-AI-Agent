@@ -1,0 +1,76 @@
+table Dim_Promotion
+	lineageTag: f45c6513-238f-438f-8515-0e4ea3779e10
+
+	column promo_name
+		dataType: string
+		lineageTag: 7d2defa7-d222-4256-acf5-49556ce6b912
+		summarizeBy: none
+		sourceColumn: promo_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column start_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 468c2417-ecbb-4cde-a461-2c67188e49f5
+		summarizeBy: none
+		sourceColumn: start_date
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation SummarizationSetBy = Automatic
+
+	column end_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 0e6c908f-3b09-457e-9839-8befaf928b83
+		summarizeBy: none
+		sourceColumn: end_date
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation SummarizationSetBy = Automatic
+
+	column discount_pct
+		dataType: double
+		lineageTag: a3db071c-fc21-4ea3-99ac-d1a9ef050c4d
+		summarizeBy: none
+		sourceColumn: discount_pct
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column promo_type
+		dataType: string
+		lineageTag: 353d61ab-2c7a-4b29-b92e-725d1d117deb
+		summarizeBy: none
+		sourceColumn: promo_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column promo_id
+		dataType: int64
+		lineageTag: a2136f8c-2f14-4e1f-8eb9-c5ae0a718ff1
+		summarizeBy: sum
+		sourceColumn: promo_id
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Dim_Promotion = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\bucay\OneDrive\Documents\Fede\AI Test\DTC Project 1\datasets\bm_promotions.csv"), [Delimiter=",", Columns=6, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers", {
+				        {"promo_name", type text},
+				        {"start_date", type date},
+				        {"end_date", type date},
+				        {"discount_pct", type number},
+				        {"promo_type", type text},
+				        {"promo_id", Int64.Type}
+				    }, "en-US")
+				in
+				    #"Changed Type"
+

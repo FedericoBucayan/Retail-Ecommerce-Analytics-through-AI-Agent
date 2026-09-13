@@ -1,0 +1,107 @@
+table Fact_Sales
+	lineageTag: 3f6244c7-830c-443b-89a4-fec761df52ef
+
+	column date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 97e1e780-cacd-409e-a5a5-c0d0e16bbcf7
+		summarizeBy: none
+		sourceColumn: date
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation SummarizationSetBy = Automatic
+
+	column store_id
+		dataType: int64
+		isHidden
+		lineageTag: 034fa384-d0b9-4290-9cd2-9fa74cd6f32c
+		summarizeBy: none
+		sourceColumn: store_id
+
+	column sku_id
+		dataType: int64
+		isHidden
+		lineageTag: dcbc2c19-3f0e-4d13-a625-51a8d79caf71
+		summarizeBy: none
+		sourceColumn: sku_id
+
+	column customer_id
+		dataType: int64
+		isHidden
+		lineageTag: bfbca588-109b-41aa-a266-e5abb97f4cf5
+		summarizeBy: none
+		sourceColumn: customer_id
+
+	column quantity
+		dataType: int64
+		lineageTag: e5f35548-9e15-4153-87c7-e5de6d641ee6
+		sourceColumn: quantity
+
+	column unit_price
+		dataType: double
+		lineageTag: a6734ec0-552b-4c33-b0a0-a5b24e49214c
+		summarizeBy: sum
+		sourceColumn: unit_price
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column total_value
+		dataType: double
+		lineageTag: d8d43e2d-959c-4f00-8238-bb85b19454af
+		summarizeBy: sum
+		sourceColumn: total_value
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column channel
+		dataType: string
+		lineageTag: 8f830b3e-1f73-45f6-9212-eca83473862e
+		sourceColumn: channel
+
+	column discount_pct
+		dataType: double
+		lineageTag: ffabc135-336c-406d-a6c3-579932af7488
+		summarizeBy: none
+		sourceColumn: discount_pct
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column net_amount
+		dataType: double
+		lineageTag: a17b949e-8c3b-412f-91fb-78a2e15df910
+		summarizeBy: sum
+		sourceColumn: net_amount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition Fact_Sales = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\bucay\OneDrive\Documents\Fede\AI Test\DTC Project 1\datasets\bm_sales.csv"), [Delimiter=",", Columns=9, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers", {
+				        {"date", type date},
+				        {"store_id", Int64.Type},
+				        {"sku_id", Int64.Type},
+				        {"customer_id", Int64.Type},
+				        {"quantity", Int64.Type},
+				        {"unit_price", type number},
+				        {"total_value", type number},
+				        {"channel", type text},
+				        {"discount_pct", type number}
+				    }, "en-US"),
+				    #"Added Net Amount" = Table.AddColumn(#"Changed Type", "net_amount", each [total_value] * (1 - [discount_pct] / 100), type number)
+				in
+				    #"Added Net Amount"
+
+

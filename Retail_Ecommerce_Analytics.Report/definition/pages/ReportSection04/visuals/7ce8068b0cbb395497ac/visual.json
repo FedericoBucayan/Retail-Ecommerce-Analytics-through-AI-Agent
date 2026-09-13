@@ -1,0 +1,79 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "name": "7ce8068b0cbb395497ac",
+  "position": {
+    "x": 24,
+    "y": 144,
+    "z": 4000,
+    "height": 104,
+    "width": 1232,
+    "tabOrder": 4000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Current Stock On Hand"
+                }
+              },
+              "queryRef": "_Measures.Current Stock On Hand",
+              "nativeQueryRef": "Current Stock On Hand"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Inventory Valuation"
+                }
+              },
+              "queryRef": "_Measures.Inventory Valuation",
+              "nativeQueryRef": "Inventory Valuation"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Out of Stock Risk SKUs"
+                }
+              },
+              "queryRef": "_Measures.Out of Stock Risk SKUs",
+              "nativeQueryRef": "Out of Stock Risk SKUs"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Stock-to-Sales Ratio"
+                }
+              },
+              "queryRef": "_Measures.Stock-to-Sales Ratio",
+              "nativeQueryRef": "Stock-to-Sales Ratio"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

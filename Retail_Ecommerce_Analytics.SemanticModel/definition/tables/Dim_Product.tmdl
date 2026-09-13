@@ -1,0 +1,66 @@
+table Dim_Product
+	lineageTag: a41424fb-9112-4b77-a073-2b9148d4a0c8
+
+	column sku_id
+		dataType: int64
+		lineageTag: 663864c7-90a0-4c5a-8c39-64219b376207
+		sourceColumn: sku_id
+
+	column sku_name
+		dataType: string
+		lineageTag: 24f708b2-be8b-4f6b-8851-e973f3aa3321
+		sourceColumn: sku_name
+
+	column category
+		dataType: string
+		lineageTag: f5aefc8c-f1eb-42ac-99d0-09eda33cd552
+		sourceColumn: category
+
+	column subcategory
+		dataType: string
+		lineageTag: 62b40d3c-a2e5-404a-a48d-e6ba5f386390
+		sourceColumn: subcategory
+
+	column unit_price
+		dataType: double
+		lineageTag: f7c428d3-ff88-4779-a155-39d0d68e3edd
+		summarizeBy: none
+		sourceColumn: unit_price
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column cost_price
+		dataType: double
+		lineageTag: c049d24a-638c-44a6-b2fc-b4efc58fb4ae
+		summarizeBy: none
+		sourceColumn: cost_price
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column brand
+		dataType: string
+		lineageTag: e1cecd27-561c-4123-a3bd-3fe6c9299a2e
+		sourceColumn: brand
+
+	partition Dim_Product = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\bucay\OneDrive\Documents\Fede\AI Test\DTC Project 1\datasets\bm_skus.csv"), [Delimiter=",", Columns=7, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers", {
+				        {"sku_id", Int64.Type},
+				        {"sku_name", type text},
+				        {"category", type text},
+				        {"subcategory", type text},
+				        {"unit_price", type number},
+				        {"cost_price", type number},
+				        {"brand", type text}
+				    }, "en-US")
+				in
+				    #"Changed Type"
+

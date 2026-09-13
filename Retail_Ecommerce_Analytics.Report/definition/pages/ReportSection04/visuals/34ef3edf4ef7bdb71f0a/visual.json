@@ -1,0 +1,129 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "name": "34ef3edf4ef7bdb71f0a",
+  "position": {
+    "x": 24,
+    "y": 488,
+    "z": 7000,
+    "height": 220,
+    "width": 1232,
+    "tabOrder": 7000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_Product"
+                    }
+                  },
+                  "Property": "sku_name"
+                }
+              },
+              "queryRef": "Dim_Product.sku_name",
+              "nativeQueryRef": "sku_name"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_Product"
+                    }
+                  },
+                  "Property": "category"
+                }
+              },
+              "queryRef": "Dim_Product.category",
+              "nativeQueryRef": "category"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_Store"
+                    }
+                  },
+                  "Property": "store_name"
+                }
+              },
+              "queryRef": "Dim_Store.store_name",
+              "nativeQueryRef": "store_name"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_Inventory"
+                    }
+                  },
+                  "Property": "stock_on_hand"
+                }
+              },
+              "queryRef": "Fact_Inventory.stock_on_hand",
+              "nativeQueryRef": "stock_on_hand"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_Inventory"
+                    }
+                  },
+                  "Property": "reorder_point"
+                }
+              },
+              "queryRef": "Fact_Inventory.reorder_point",
+              "nativeQueryRef": "reorder_point"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_Inventory"
+                    }
+                  },
+                  "Property": "safety_stock"
+                }
+              },
+              "queryRef": "Fact_Inventory.safety_stock",
+              "nativeQueryRef": "safety_stock"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'SKU-Level Replenishment Stock Status'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

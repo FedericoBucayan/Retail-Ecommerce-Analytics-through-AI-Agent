@@ -1,0 +1,44 @@
+table Dim_Store
+	lineageTag: a2e49302-3f82-414f-aaf8-debd3028e861
+
+	column store_id
+		dataType: int64
+		lineageTag: 64a54695-d838-48ce-b305-6ce1b5630f21
+		sourceColumn: store_id
+
+	column store_name
+		dataType: string
+		lineageTag: 883fd8f7-83b2-481e-a4d2-b21b5a84e21d
+		sourceColumn: store_name
+
+	column city
+		dataType: string
+		lineageTag: 9a7e3823-c5f8-4a04-a4b6-fd22fa2e38ec
+		sourceColumn: city
+
+	column store_type
+		dataType: string
+		lineageTag: 706dfbd4-b900-4800-bfa7-f65b138e5371
+		sourceColumn: store_type
+
+	column opening_date
+		dataType: string
+		lineageTag: 6ed667a3-b252-48f1-95a0-cd77e07503b8
+		sourceColumn: opening_date
+
+	partition Dim_Store = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\bucay\OneDrive\Documents\Fede\AI Test\DTC Project 1\datasets\bm_stores.csv"), [Delimiter=",", Columns=5, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers", {
+				        {"store_id", Int64.Type},
+				        {"store_name", type text},
+				        {"city", type text},
+				        {"store_type", type text},
+				        {"opening_date", type text}
+				    })
+				in
+				    #"Changed Type"
+

@@ -1,0 +1,24 @@
+relationship Fact_Sales_to_Dim_Date
+	fromColumn: Fact_Sales.date
+	toColumn: Dim_Date.Date
+
+relationship Fact_Sales_to_Dim_Product
+	fromColumn: Fact_Sales.sku_id
+	toColumn: Dim_Product.sku_id
+
+relationship Fact_Sales_to_Dim_Store
+	fromColumn: Fact_Sales.store_id
+	toColumn: Dim_Store.store_id
+
+relationship Fact_Sales_to_Dim_Customer
+	fromColumn: Fact_Sales.customer_id
+	toColumn: Dim_Customer.cust_id
+
+relationship Fact_Inventory_to_Dim_Product
+	fromColumn: Fact_Inventory.sku_id
+	toColumn: Dim_Product.sku_id
+
+relationship Fact_Inventory_to_Dim_Store
+	fromColumn: Fact_Inventory.store_id
+	toColumn: Dim_Store.store_id
+

@@ -1,0 +1,85 @@
+table Fact_Inventory
+	lineageTag: 1a57df66-e132-449c-98f3-c3eb0059ecb2
+
+	column store_id
+		dataType: int64
+		isHidden
+		lineageTag: 585dc63d-f1e5-474f-a87d-39af18de7fa5
+		summarizeBy: none
+		sourceColumn: store_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column sku_id
+		dataType: int64
+		isHidden
+		lineageTag: 16b5a34f-12fb-489d-acb2-602fe0b45f6a
+		summarizeBy: none
+		sourceColumn: sku_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column stock_on_hand
+		dataType: int64
+		lineageTag: 1bdf9639-fb68-4b35-a619-409ab0b626f6
+		summarizeBy: sum
+		sourceColumn: stock_on_hand
+
+		annotation SummarizationSetBy = Automatic
+
+	column reorder_point
+		dataType: int64
+		lineageTag: b8c30c85-4bdd-4a3b-ab06-8cd67f2145c3
+		summarizeBy: sum
+		sourceColumn: reorder_point
+
+		annotation SummarizationSetBy = Automatic
+
+	column safety_stock
+		dataType: int64
+		lineageTag: 80492c07-9939-43e0-82d3-dc2929500dc2
+		summarizeBy: sum
+		sourceColumn: safety_stock
+
+		annotation SummarizationSetBy = Automatic
+
+	column last_restock_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 0969e8c5-925c-4137-95ee-185f3c6c857d
+		summarizeBy: none
+		sourceColumn: last_restock_date
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation SummarizationSetBy = Automatic
+
+	column snapshot_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: a1e6cc6a-5d8d-47f1-9296-189c53d28a8d
+		summarizeBy: none
+		sourceColumn: snapshot_date
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Fact_Inventory = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\bucay\OneDrive\Documents\Fede\AI Test\DTC Project 1\datasets\bm_inventory.csv"), [Delimiter=",", Columns=7, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers", {
+				        {"store_id", Int64.Type},
+				        {"sku_id", Int64.Type},
+				        {"stock_on_hand", Int64.Type},
+				        {"reorder_point", Int64.Type},
+				        {"safety_stock", Int64.Type},
+				        {"last_restock_date", type date},
+				        {"snapshot_date", type date}
+				    }, "en-US")
+				in
+				    #"Changed Type"
+

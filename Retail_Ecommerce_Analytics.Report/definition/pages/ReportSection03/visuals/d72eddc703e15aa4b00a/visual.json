@@ -1,0 +1,87 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "name": "d72eddc703e15aa4b00a",
+  "position": {
+    "x": 760,
+    "y": 488,
+    "z": 9000,
+    "height": 220,
+    "width": 496,
+    "tabOrder": 9000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_Promotion"
+                    }
+                  },
+                  "Property": "promo_name"
+                }
+              },
+              "queryRef": "Dim_Promotion.promo_name",
+              "nativeQueryRef": "promo_name"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_Promotion"
+                    }
+                  },
+                  "Property": "promo_type"
+                }
+              },
+              "queryRef": "Dim_Promotion.promo_type",
+              "nativeQueryRef": "promo_type"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_Promotion"
+                    }
+                  },
+                  "Property": "discount_pct"
+                }
+              },
+              "queryRef": "Dim_Promotion.discount_pct",
+              "nativeQueryRef": "discount_pct"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Promotional Campaigns & Discount Rates'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

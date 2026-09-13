@@ -1,0 +1,80 @@
+table Dim_Customer
+	lineageTag: d95d962f-7d28-43b6-a512-2f9255ed024e
+
+	column cust_id
+		dataType: int64
+		lineageTag: d3602296-80df-45bd-97d7-888ed2ecce19
+		summarizeBy: none
+		sourceColumn: cust_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column age
+		dataType: int64
+		lineageTag: 4007b38a-d3d5-483c-b3a2-b22bfd0fbe2a
+		summarizeBy: sum
+		sourceColumn: age
+
+		annotation SummarizationSetBy = Automatic
+
+	column gender
+		dataType: string
+		lineageTag: 89f2e816-cf28-4740-a2b6-ee370aa615aa
+		summarizeBy: none
+		sourceColumn: gender
+
+		annotation SummarizationSetBy = Automatic
+
+	column city
+		dataType: string
+		lineageTag: 0824d44a-590d-4f64-b5d6-f1ecf6c58119
+		summarizeBy: none
+		sourceColumn: city
+
+		annotation SummarizationSetBy = Automatic
+
+	column loyalty_segment
+		dataType: string
+		lineageTag: 4559e31d-aaec-4269-9473-dbc8c3edd71d
+		summarizeBy: none
+		sourceColumn: loyalty_segment
+
+		annotation SummarizationSetBy = Automatic
+
+	column preferred_channel
+		dataType: string
+		lineageTag: 166a31d0-3044-4560-9bd7-e200632865e0
+		summarizeBy: none
+		sourceColumn: preferred_channel
+
+		annotation SummarizationSetBy = Automatic
+
+	column registration_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 73d2a761-df92-4464-b0c5-15462778c26f
+		summarizeBy: none
+		sourceColumn: registration_date
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Dim_Customer = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\bucay\OneDrive\Documents\Fede\AI Test\DTC Project 1\datasets\bm_customers.csv"), [Delimiter=",", Columns=7, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers", {
+				        {"cust_id", Int64.Type},
+				        {"age", Int64.Type},
+				        {"gender", type text},
+				        {"city", type text},
+				        {"loyalty_segment", type text},
+				        {"preferred_channel", type text},
+				        {"registration_date", type date}
+				    }, "en-US")
+				in
+				    #"Changed Type"
+

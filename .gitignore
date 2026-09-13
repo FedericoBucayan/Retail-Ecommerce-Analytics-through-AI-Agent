@@ -1,0 +1,10 @@
+# Power BI Desktop local cache and user settings
+**/.pbi/
+*.tmp
+*.lock
+
+# Python cache & OS metadata
+__pycache__/
+*.pyc
+.DS_Store
+Thumbs.db

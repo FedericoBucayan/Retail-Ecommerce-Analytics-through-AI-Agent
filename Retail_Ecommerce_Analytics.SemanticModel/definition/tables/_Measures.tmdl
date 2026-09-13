@@ -1,0 +1,165 @@
+table _Measures
+	lineageTag: 85c111d8-8bfe-4c24-a29e-3af7428fdd1c
+
+	measure 'Gross Sales' = SUM(Fact_Sales[total_value])
+		formatString: $#,##0
+		displayFolder: Sales & Revenue
+		lineageTag: 05fd6043-c7f7-4a9c-bf67-3ba858ea5e98
+
+	measure 'Net Sales' = SUM(Fact_Sales[net_amount])
+		formatString: $#,##0
+		displayFolder: Sales & Revenue
+		lineageTag: 6f7eb949-f9da-42df-9ff3-81b5d3cddcb0
+
+	measure 'Total Units Sold' = SUM(Fact_Sales[quantity])
+		formatString: #,##0
+		displayFolder: Sales & Revenue
+		lineageTag: 39b541e4-2f37-4d68-8c79-6f4f38956435
+
+	measure 'Transactions Count' = COUNTROWS(Fact_Sales)
+		formatString: #,##0
+		displayFolder: Sales & Revenue
+		lineageTag: a5e1d60a-ec24-4c50-848b-5106502df8a8
+
+	measure 'Average Order Value (AOV)' = DIVIDE([Net Sales], [Transactions Count], 0)
+		formatString: $#,##0.00
+		displayFolder: Sales & Revenue
+		lineageTag: 0d3148e8-a380-47ac-8948-6b48d4d30860
+
+	measure 'Average Unit Retail (AUR)' = DIVIDE([Net Sales], [Total Units Sold], 0)
+		formatString: $#,##0.00
+		displayFolder: Sales & Revenue
+		lineageTag: 84320b36-fada-45c4-925b-c8c3fb071268
+
+	measure 'Total COGS' = SUMX(Fact_Sales, Fact_Sales[quantity] * RELATED(Dim_Product[cost_price]))
+		formatString: $#,##0
+		displayFolder: Margin & Profitability
+		lineageTag: 377ef104-cf72-48fc-9f28-8ebedb67f7c7
+
+	measure 'Gross Margin $' = [Net Sales] - [Total COGS]
+		formatString: $#,##0
+		displayFolder: Margin & Profitability
+		lineageTag: 233b56b6-5a9f-4f67-a987-a1915d88fc60
+
+	measure 'Gross Margin %' = DIVIDE([Gross Margin $], [Net Sales], 0)
+		formatString: 0.0%
+		displayFolder: Margin & Profitability
+		lineageTag: 4dbdfa54-2d48-4704-a614-50dabcc28c4d
+
+	measure 'Omnichannel Sales' = CALCULATE([Net Sales], REMOVEFILTERS(Fact_Sales[channel]))
+		formatString: $#,##0
+		displayFolder: Channel Performance
+		lineageTag: fc095e84-f691-4b78-85d5-f6db717940bb
+
+	measure 'Store Sales' = CALCULATE([Net Sales], Fact_Sales[channel] = "Store")
+		formatString: $#,##0
+		displayFolder: Channel Performance
+		lineageTag: fcd5d9f2-74c0-4ae9-843c-08eca85d3bb6
+
+	measure 'E-Commerce / Mobile App Sales' = CALCULATE([Net Sales], Fact_Sales[channel] IN { "Website", "MobileApp" })
+		formatString: $#,##0
+		displayFolder: Channel Performance
+		lineageTag: 580f863b-42b6-4663-988c-317b374aec7f
+
+	measure 'Online Penetration %' = DIVIDE([E-Commerce / Mobile App Sales], [Net Sales], 0)
+		formatString: 0.0%
+		displayFolder: Channel Performance
+		lineageTag: d535448c-f4ec-467f-a7c3-af400f057c6b
+
+	measure 'Current Stock On Hand' = SUM(Fact_Inventory[stock_on_hand])
+		formatString: #,##0
+		displayFolder: Inventory & Supply Health
+		lineageTag: a205a87f-55b6-4840-813c-2487d9a9aec3
+
+	measure 'Stock-to-Sales Ratio' = DIVIDE([Current Stock On Hand], [Total Units Sold], 0)
+		formatString: 0.00
+		displayFolder: Inventory & Supply Health
+		lineageTag: 0bf66876-46f7-4445-b139-dcda9fc8ea19
+
+	measure 'Out of Stock Risk SKUs' =
+			COALESCE(
+			    CALCULATE(
+			        DISTINCTCOUNT(Fact_Inventory[sku_id]),
+			        KEEPFILTERS(Fact_Inventory[stock_on_hand] < Fact_Inventory[safety_stock])
+			    ),
+			    0
+			)
+		formatString: #,##0
+		displayFolder: Inventory & Supply Health
+		lineageTag: eba7b0d8-6a57-4d22-aabe-b85b2bbf4698
+
+	measure 'Inventory Valuation' = SUMX(Fact_Inventory, Fact_Inventory[stock_on_hand] * RELATED(Dim_Product[cost_price]))
+		formatString: $#,##0
+		displayFolder: Inventory & Supply Health
+		lineageTag: cb1b5b9d-1896-4cbe-9ffc-4c14d37301c4
+
+	measure 'Days of Supply' = DIVIDE([Current Stock On Hand], DIVIDE([Total Units Sold], 30, 1), 0)
+		formatString: 0.0
+		displayFolder: Inventory & Supply Health
+		lineageTag: 11eb1c59-1c2a-4e91-9d64-05d4c0807984
+
+	measure 'Active Customers' = DISTINCTCOUNT(Fact_Sales[customer_id])
+		formatString: #,##0
+		displayFolder: Customer & Loyalty
+		lineageTag: ac653106-b59f-4bbe-802c-1624fecbefba
+
+	measure 'Revenue per Loyalty Segment' = [Net Sales]
+		formatString: $#,##0
+		displayFolder: Customer & Loyalty
+		lineageTag: 2406700f-230f-4dad-bf5b-584c6b00fcec
+
+	measure 'Customer Retention / Repeat Purchase Rate' =
+			VAR CustTxSummary =
+			    SUMMARIZE(
+			        FILTER(Fact_Sales, NOT(ISBLANK(Fact_Sales[customer_id]))),
+			        Fact_Sales[customer_id],
+			        "@TxCount", COUNTROWS(Fact_Sales)
+			    )
+			VAR RepeatCustomers = COUNTROWS(FILTER(CustTxSummary, [@TxCount] > 1))
+			VAR TotalCustomers = COUNTROWS(CustTxSummary)
+			RETURN
+			    DIVIDE(RepeatCustomers, TotalCustomers, 0)
+		formatString: 0.0%
+		displayFolder: Customer & Loyalty
+		lineageTag: 126772c6-0bb5-4ec4-b9c9-69ab688aeac9
+
+	measure 'Sales YTD' = TOTALYTD([Net Sales], 'Dim_Date'[Date])
+		formatString: $#,##0
+		displayFolder: Time Intelligence
+		lineageTag: 424ec102-1975-4886-bee2-d6d6839d64f1
+
+	measure 'Sales Prior Year (PY)' = CALCULATE([Net Sales], SAMEPERIODLASTYEAR('Dim_Date'[Date]))
+		formatString: $#,##0
+		displayFolder: Time Intelligence
+		lineageTag: 26044c8a-7e4a-46c9-afc6-9354acd5e527
+
+	measure 'YoY Sales Growth $' =
+			VAR PY = [Sales Prior Year (PY)]
+			RETURN
+			    IF(NOT(ISBLANK(PY)), [Net Sales] - PY, BLANK())
+		formatString: $#,##0
+		displayFolder: Time Intelligence
+		lineageTag: 252297c9-e542-4db8-8108-6ce21763cf00
+
+	measure 'YoY Sales Growth %' =
+			VAR PY = [Sales Prior Year (PY)]
+			RETURN
+			    DIVIDE([Net Sales] - PY, PY, BLANK())
+		formatString: +0.0%;-0.0%;0.0%
+		displayFolder: Time Intelligence
+		lineageTag: 73c59f7c-cc59-42fe-b89c-96f4ca478315
+
+	measure 'Target Sales' = [Sales Prior Year (PY)] * 1.10
+		formatString: $#,##0
+		displayFolder: Time Intelligence
+		lineageTag: 5cd9405d-4d03-4a0a-8b70-74aca36c8429
+
+	column Description
+		lineageTag: 1b1ace1e-682b-4018-8f9d-eeb3e24eb8a2
+		isNameInferred
+		sourceColumn: [Description]
+
+	partition _Measures = calculated
+		mode: import
+		source = ROW("Description", "Retail & E-Commerce Analytics Measures")
+

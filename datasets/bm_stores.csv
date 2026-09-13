@@ -1,0 +1,51 @@
+store_id,store_name,city,store_type,opening_date
+9,BlueMart Store 09,Mexico,Mall,00:00.0
+10,BlueMart Store 10,Mexico,Mall,00:00.0
+11,BlueMart Store 11,Sao Paolo,Mall,00:00.0
+12,BlueMart Store 12,Buenos Aires,Mall,00:00.0
+13,BlueMart Store 13,Buenos Aires,Community,00:00.0
+14,BlueMart Store 14,Sao Paolo,Mall,00:00.0
+15,BlueMart Store 15,Sao Paolo,Mall,00:00.0
+16,BlueMart Store 16,Sao Paolo,High Street,00:00.0
+17,BlueMart Store 17,Sao Paolo,Mall,00:00.0
+18,BlueMart Store 18,Mexico,Community,00:00.0
+19,BlueMart Store 19,Sao Paolo,Mall,35:07.3
+20,BlueMart Store 20,Sao Paolo,Community,14:38.0
+21,BlueMart Store 21,Mexico,High Street,54:08.8
+22,BlueMart Store 22,Sao Paolo,Mall,33:39.5
+23,BlueMart Store 23,Sao Paolo,Mall,13:10.2
+24,BlueMart Store 24,Sao Paolo,Community,52:41.0
+25,BlueMart Store 25,Sao Paolo,High Street,32:11.7
+1,BlueMart Store 01,Sao Paolo,Community,00:00.0
+26,BlueMart Store 26,Mexico,High Street,11:42.4
+27,BlueMart Store 27,Sao Paolo,High Street,51:13.2
+28,BlueMart Store 28,Mexico,Mall,30:43.9
+29,BlueMart Store 29,Mexico,Mall,10:14.6
+2,BlueMart Store 02,Buenos Aires,High Street,00:00.0
+30,BlueMart Store 30,Sao Paolo,Mall,49:45.4
+31,BlueMart Store 31,Mexico,Community,29:16.1
+32,BlueMart Store 32,Sao Paolo,High Street,08:46.8
+3,BlueMart Store 03,Mexico,Community,00:00.0
+33,BlueMart Store 33,Sao Paolo,Mall,48:17.6
+34,BlueMart Store 34,Buenos Aires,Mall,27:48.3
+35,BlueMart Store 35,Buenos Aires,Mall,07:19.0
+36,BlueMart Store 36,Buenos Aires,Mall,46:49.8
+4,BlueMart Store 04,Mexico,Community,00:00.0
+37,BlueMart Store 37,Sao Paolo,High Street,26:20.5
+38,BlueMart Store 38,Sao Paolo,High Street,05:51.2
+39,BlueMart Store 39,Mexico,Community,45:22.0
+5,BlueMart Store 05,Sao Paolo,High Street,00:00.0
+40,BlueMart Store 40,Sao Paolo,High Street,24:52.7
+41,BlueMart Store 41,Sao Paolo,Mall,04:23.4
+42,BlueMart Store 42,Sao Paolo,High Street,43:54.1
+6,BlueMart Store 06,Sao Paolo,Community,00:00.0
+43,BlueMart Store 43,Sao Paolo,High Street,23:24.9
+44,BlueMart Store 44,Buenos Aires,High Street,02:55.6
+45,BlueMart Store 45,Sao Paolo,High Street,42:26.3
+46,BlueMart Store 46,Mexico,High Street,21:57.1
+7,BlueMart Store 07,Sao Paolo,Mall,00:00.0
+47,BlueMart Store 47,Sao Paolo,High Street,01:27.8
+48,BlueMart Store 48,Mexico,High Street,40:58.5
+49,BlueMart Store 49,Mexico,Mall,20:29.3
+8,BlueMart Store 08,Buenos Aires,Mall,00:00.0
+50,BlueMart Store 50,Sao Paolo,Mall,00:00.0

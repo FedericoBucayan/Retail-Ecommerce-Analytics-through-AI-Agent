@@ -1,0 +1,93 @@
+table Dim_Date
+	lineageTag: c740a4dd-6253-489f-bbf5-f04735a1f2c8
+	dataCategory: Time
+
+	column Date
+		isUnique
+		lineageTag: 1e7ddc7a-cd07-42cc-a946-d5167c793052
+		isNameInferred
+		sourceColumn: [Date]
+
+	column Year
+		lineageTag: 8161896b-d751-48b0-9325-d07dfd298b5f
+		isNameInferred
+		sourceColumn: [Year]
+
+	column Quarter
+		lineageTag: 807adada-af77-4ea2-9273-84ffa17d233c
+		isNameInferred
+		sourceColumn: [Quarter]
+
+	column 'Year Quarter'
+		lineageTag: 2fe5d31e-f049-4eca-a2f1-362934f8abf7
+		isNameInferred
+		sourceColumn: [Year Quarter]
+
+	column 'Month Num'
+		lineageTag: 77bf99ae-0b63-44cc-9862-c90f4b32ca0f
+		isNameInferred
+		sourceColumn: [Month Num]
+
+	column 'Month Name'
+		sortByColumn: 'Month Num'
+		lineageTag: 84746c81-345e-4efe-82cc-4910889fe9d0
+		isNameInferred
+		sourceColumn: [Month Name]
+
+	column 'Month Short'
+		sortByColumn: 'Month Num'
+		lineageTag: d6c30491-a57b-4e95-8f42-b5d7fa72aa07
+		isNameInferred
+		sourceColumn: [Month Short]
+
+	column 'Year Month'
+		lineageTag: 6aa78dda-b40d-4651-9984-bff7e0c5c2be
+		isNameInferred
+		sourceColumn: [Year Month]
+
+	column 'Day of Month'
+		lineageTag: 79c6085f-fb99-4b90-a9e7-a54fe3725c98
+		isNameInferred
+		sourceColumn: [Day of Month]
+
+	column 'Day of Week Num'
+		lineageTag: 8c9d1aa3-50bc-4c52-b366-4f4477f80882
+		isNameInferred
+		sourceColumn: [Day of Week Num]
+
+	column 'Day of Week'
+		sortByColumn: 'Day of Week Num'
+		lineageTag: 6a2ddc6f-d6db-41d8-bbdd-8c69c7b24108
+		isNameInferred
+		sourceColumn: [Day of Week]
+
+	column 'Day of Week Short'
+		sortByColumn: 'Day of Week Num'
+		lineageTag: 53db07a2-e03a-4e6d-ad53-62fe8fc7145c
+		isNameInferred
+		sourceColumn: [Day of Week Short]
+
+	column 'Is Weekend'
+		lineageTag: 665aa3a4-e9ac-4854-a564-50e32c542658
+		isNameInferred
+		sourceColumn: [Is Weekend]
+
+	partition Dim_Date = calculated
+		mode: import
+		source =
+				ADDCOLUMNS(
+				    CALENDAR(DATE(2021, 1, 1), DATE(2025, 12, 31)),
+				    "Year", YEAR([Date]),
+				    "Quarter", "Q" & FORMAT([Date], "Q"),
+				    "Year Quarter", FORMAT([Date], "YYYY") & "-Q" & FORMAT([Date], "Q"),
+				    "Month Num", MONTH([Date]),
+				    "Month Name", FORMAT([Date], "mmmm"),
+				    "Month Short", FORMAT([Date], "mmm"),
+				    "Year Month", FORMAT([Date], "YYYY-MM"),
+				    "Day of Month", DAY([Date]),
+				    "Day of Week Num", WEEKDAY([Date], 2),
+				    "Day of Week", FORMAT([Date], "dddd"),
+				    "Day of Week Short", FORMAT([Date], "ddd"),
+				    "Is Weekend", IF(WEEKDAY([Date], 2) >= 6, 1, 0)
+				)
+

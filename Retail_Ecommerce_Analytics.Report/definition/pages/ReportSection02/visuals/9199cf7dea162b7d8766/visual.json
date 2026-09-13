@@ -1,0 +1,79 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "name": "9199cf7dea162b7d8766",
+  "position": {
+    "x": 24,
+    "y": 144,
+    "z": 5000,
+    "height": 104,
+    "width": 1232,
+    "tabOrder": 5000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Active Customers"
+                }
+              },
+              "queryRef": "_Measures.Active Customers",
+              "nativeQueryRef": "Active Customers"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Customer Retention / Repeat Purchase Rate"
+                }
+              },
+              "queryRef": "_Measures.Customer Retention / Repeat Purchase Rate",
+              "nativeQueryRef": "Customer Retention / Repeat Purchase Rate"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Average Order Value (AOV)"
+                }
+              },
+              "queryRef": "_Measures.Average Order Value (AOV)",
+              "nativeQueryRef": "Average Order Value (AOV)"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Average Unit Retail (AUR)"
+                }
+              },
+              "queryRef": "_Measures.Average Unit Retail (AUR)",
+              "nativeQueryRef": "Average Unit Retail (AUR)"
+            }
+          ]
+        }
+      }
+    }
+  }
+}
