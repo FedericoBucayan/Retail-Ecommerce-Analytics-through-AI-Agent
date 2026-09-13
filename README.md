@@ -1,190 +1,110 @@
-# Retail & E-Commerce Omnichannel Analytics Dashboard
+# Retail & E-Commerce Analytics Dashboard Through AI Agents
 
-📊 [Power BI Project (.pbip)](./Retail_Ecommerce_Analytics.pbip) | 📄 [Power BI PDF Report Export](./Retail_Ecommerce_Analytics_PBI_PDF.pdf) | 📁 [Raw Datasets](./datasets/)
+[Power BI Project (.pbip)](./Retail_Ecommerce_Analytics.pbip) | [Power BI PDF Report Export](./Retail_Ecommerce_Analytics_PBI_PDF.pdf) | [Raw Datasets](./datasets/)
 
-A production-grade Retail and E-Commerce analytics solution engineered from end to end in **Power BI Developer Mode (.pbip)**. 
+A complete, fully functional Retail and E-Commerce dashboard built in Power BI Developer Mode (.pbip).
 
-This repository serves as an enterprise analytics showcase demonstrating both deep domain expertise in retail planning and commercial merchandise analytics, and a cutting-edge **Agentic AI Engineering experiment**: generating an enterprise-ready, fully validated Power BI solution by feeding raw dataset files and structured architectural prompts into **Google Antigravity** paired with **Microsoft's Power BI Modeling MCP Server** and the **Fabric Skills Framework**.
+Building a comprehensive dashboard like this by hand typically takes between 16 and 26 hours of manual setup. By using AI agents, this entire project was planned, built, and verified in just 30 to 45 minutes. That represents an immediate time savings of over 95%, cutting more than 20 hours of repetitive manual effort while maintaining high visual quality and accurate business formulas.
 
----
-
-## Executive Value Proposition for Recruiters & Hiring Managers
-
-### 1. Commercial Retail Analytics & Decision-Maker Mindset
-This project models and delivers high-impact commercial and merchandise planning intelligence across omnichannel operations:
-* **Core Commercial KPIs**: Formulates, validates, and visualizes 26 critical retail measures across 6 specialized display folders: Gross Sales, Net Sales ($69.1M), Gross Margin % (24.6%), Total Units Sold (1.68M), Transactions Count (642K), Average Order Value (AOV: $107.66), Average Unit Retail (AUR: $41.20), and Online Penetration (45.3%).
-* **Omnichannel Performance**: Evaluates revenue splits across Store ($28.8M / 41.7%), Website ($19.1M / 27.6%), Mobile App ($12.3M / 17.8%), Amazon ($6.1M / 8.8%), and Mercado Libre ($2.9M / 4.2%).
-* **Merchandising & Inventory Health**: Tracks inventory valuation ($39.0M), Stock-to-Sales ratios (0.89), category days of supply, and stockout exception monitoring against safety stock and reorder thresholds across 50 retail locations.
-* **Customer Dynamics & Loyalty**: Analyzes repeat purchase rates, customer retention distributions, and revenue contributions across Gold, Silver, and Bronze loyalty tiers.
+This repository demonstrates how raw data and straightforward instructions can be fed into Google Antigravity and Microsoft Power BI tools to deliver a polished, ready to use business dashboard in a fraction of the usual time.
 
 ---
 
-### 2. The Agentic AI Experiment: Prompt-to-Production Power BI Architecture
-This project was constructed as a rigorous applied benchmark testing modern Agentic AI coding tools for business intelligence:
+## The 4-Step Creation Workflow
 
-* **Dataset Origin**: The raw transactional records were sourced from **Google Dataset Search** and custom-curated, modified, and scaled to simulate an omnichannel retail enterprise spanning 641,843 sales records, 8,735 inventory snapshots, 200 product SKUs, 5,000 customers, and 50 store locations.
-* **The Autonomous Workflow**: Rather than using manual drag-and-drop report authoring in Power BI Desktop, the entire solution was orchestrated by feeding the raw CSV datasets and architectural guidelines into **Google Antigravity** (an advanced agentic AI coding assistant).
-* **Tooling Orchestration**:
-  1. **Microsoft Skills for Fabric (`skills-for-fabric` v0.3.16)**: Procedural execution runbooks for semantic modeling (`semantic-model-authoring`), layout design (`powerbi-report-planning`), typography and 8px grid palettes (`powerbi-report-design`), and modern PBIR container bindings (`powerbi-report-authoring`).
-  2. **Power BI Modeling MCP Server (`powerbi-modeling-mcp`)**: Headless model manipulation via Model Context Protocol to construct TMDL star schemas, relationship graphs, and DAX measure catalogs.
-  3. **Desktop Bridge & PBIR Validation CLI (`@microsoft/powerbi-report-authoring-cli`)**: Live reload and schema verification enforcing 0 errors against official Microsoft Fabric PBIR schemas.
+This project followed a straightforward, repeatable four-step process combining human direction with AI tools:
+
+1. Data Sourcing and Customization
+   Located a raw Retail and E-Commerce transactional dataset on Google Dataset Search. Curated and adjusted the tables to reflect realistic multi-channel retail operations, covering sales transactions, customer records, store locations, products, and inventory snapshots.
+
+2. Prompt Engineering in Google Gemini
+   Used the Google Gemini Web App to synthesize the project context and generate the master prompt for the build. Provided Gemini with the custom datasets along with Microsoft research resources, including:
+   * Microsoft demonstration videos on building Power BI reports through AI agents: [Video 1](https://youtu.be/O8OKSNUD3lA) and [Video 2](https://youtu.be/NIDS9wMcSsE)
+   * [Microsoft Skills for Fabric](https://github.com/microsoft/skills-for-fabric/tree/main) repository for modeling and design best practices
+   * [Microsoft Power BI Modeling MCP](https://github.com/microsoft/powerbi-modeling-mcp) documentation for programmatic model creation
+   Prompted Gemini to synthesize these resources and generate the most effective, structured instructions for Google Antigravity to build the entire solution.
+
+3. Autonomous Build in Google Antigravity
+   Created the project workspace inside Google Antigravity, placed the dataset files into the folder, and provided the generated master prompt. Antigravity read the files, structured the data model, wrote 26 business calculations, and built the four dashboard pages with consistent formatting.
+
+4. Fine-Tuning and Verification
+   Ran automated checks against official Microsoft rules to ensure the report opens without errors, verified visual alignments, and exported high-resolution PDF copies for easy sharing.
 
 ---
 
-### 3. Quantifiable Efficiency: Manual Development vs. Agentic Method
+## Executive Summary: How the AI Agent Methodology Works
 
-| Development Stage | Traditional Manual Method (Power BI Desktop UI) | Agentic AI Method (Antigravity + MCP + Skills) | Efficiency Gain |
+In a traditional setup, creating a business report in Power BI requires hours of clicking through menus. An analyst has to clean and format tables one by one, manually connect them, write dozens of formulas by hand, adjust visual charts pixel by pixel, and test every page to make sure nothing broke.
+
+This project tested a faster, automated alternative. Raw data files from Google Dataset Search were provided to Google Antigravity alongside clear instructions on what the dashboard should accomplish.
+
+Working as an autonomous assistant, the AI tools handled the entire process from start to finish:
+1. Understood the raw retail data and organized it into clean, connected tables.
+2. Built 26 standard business calculations, including sales revenue, profit margins, and inventory levels.
+3. Designed and formatted a 4-page visual dashboard with consistent color palettes, clean spacing, and clear layouts.
+4. Checked all report pages against official Microsoft rules to guarantee that everything opens smoothly with zero errors.
+
+---
+
+## Quantifiable Efficiency: Manual Development vs. AI Agents
+
+The table below breaks down the time required for each phase of dashboard creation, comparing traditional manual work in Power BI Desktop against the AI agent method.
+
+| Development Stage | Traditional Manual Work (Power BI Desktop) | AI Agent Method (Antigravity + Microsoft Tools) | Time Saved |
 | :--- | :--- | :--- | :--- |
-| **Data Ingestion & M Transforms** | 2 – 3 Hours (manual Power Query UI steps, typing, data profiling) | **< 3 Minutes** (automated programmatic M generation in TMDL) | **~95% Faster** |
-| **Star Schema & Relationships** | 1 – 2 Hours (dragging relationship lines, setting cardinality, auto-date cleanup) | **< 2 Minutes** (clean TMDL dimensional relationship declarations) | **~95% Faster** |
-| **DAX Measures Formulation (26 KPIs)** | 4 – 6 Hours (writing, syntax debugging, formatting, display folder sorting) | **< 5 Minutes** (vectorized DAX generation with display folders & format strings) | **~98% Faster** |
-| **Report Layout & Visual Authoring (4 Pages)** | 6 – 10 Hours (creating visual cards, line/bar charts, alignment, pixel spacing) | **< 10 Minutes** (programmatic PBIR container generation with 8px grid spacing) | **~98% Faster** |
-| **Theme & Editorial Design Injection** | 1 – 2 Hours (custom JSON palette compilation, typography styling) | **< 1 Minute** (instant theme JSON compilation & injection) | **~98% Faster** |
-| **Quality Audit & Schema Validation** | 2 – 3 Hours (manual visual testing, verifying measure outputs, clicking tabs) | **< 2 Minutes** (automated CLI schema validation & headless screenshot auditing) | **~90% Faster** |
-| **TOTAL TURNAROUND TIME** | **16 – 26 Engineering Hours** | **~30 – 45 Minutes** | **>95% Total Time Reduction** |
+| Data Preparation and Cleaning | 2 to 3 Hours (Clicking through Power Query menus, manual adjustments) | Under 3 Minutes (Automated data loading and transformation) | ~95% Faster |
+| Connecting Data Tables | 1 to 2 Hours (Dragging relationship lines, setting connections manually) | Under 2 Minutes (Automatic table relationship setup) | ~95% Faster |
+| Writing 26 Business Formulas | 4 to 6 Hours (Typing formulas, fixing syntax errors, organizing folders) | Under 5 Minutes (Automated formula creation and folder organization) | ~98% Faster |
+| Building 4 Dashboard Pages | 6 to 10 Hours (Creating visuals, arranging cards, aligning charts, fixing margins) | Under 10 Minutes (Automated layout generation with consistent spacing) | ~98% Faster |
+| Styling and Color Themes | 1 to 2 Hours (Picking color codes, setting fonts, testing visual contrast) | Under 1 Minute (Instant application of a clean editorial theme) | ~98% Faster |
+| Quality Checks and Testing | 2 to 3 Hours (Clicking through tabs, checking numbers, hunting for visual bugs) | Under 2 Minutes (Automated error checks against official Microsoft standards) | ~90% Faster |
+| TOTAL TURNAROUND TIME | 16 to 26 Hours | 30 to 45 Minutes | Over 95% Saved (20+ Hours) |
 
----
-
-## Technical Framework & Power BI Architecture
-
-```mermaid
-graph TD
-    subgraph "Dimensional Layer"
-        DP[Dim_Product<br/>200 SKUs]
-        DS[Dim_Store<br/>50 Stores]
-        DC[Dim_Customer<br/>5,000 Customers]
-        DPr[Dim_Promotion<br/>33 Promos]
-        DD[Dim_Date<br/>2021-2025 Calendar]
-    end
-
-    subgraph "Fact Layer"
-        FS[Fact_Sales<br/>641,843 Records]
-        FI[Fact_Inventory<br/>8,735 Snapshots]
-    end
-
-    subgraph "Analytics & Visuals"
-        M[_Measures<br/>26 Vectorized DAX Measures]
-        R[PBIR Report<br/>4 Pages / 38 Visuals]
-    end
-
-    DP -->|1:N| FS
-    DS -->|1:N| FS
-    DC -->|1:N| FS
-    DD -->|1:N| FS
-
-    DP -->|1:N| FI
-    DS -->|1:N| FI
-    DD -->|1:N| FI
-
-    FS -.-> M
-    FI -.-> M
-    M -.-> R
-```
-
-### Key Technical Deliverables:
-1. **Semantic Model (`Retail_Ecommerce_Analytics.SemanticModel`)**:
-   * Pure Star Schema architecture serialized in human-readable **TMDL format**.
-   * Auto Date/Time bloat eliminated: zero redundant `LocalDateTable` structures.
-   * `Dim_Date` calendar with chronological sorting (`Month Name` sorted by `Month Num`).
-2. **DAX Measure Catalog (`_Measures`)**:
-   * 26 retail measures organized across 6 display folders.
-   * Vectorized Storage Engine pushdown: `[Net Sales]` pre-computed during ingestion for instant multi-threaded columnar evaluation.
-   * High-iteration measures optimized with native Storage Engine `SUMMARIZE` grouping.
-3. **Modern PBIR Report (`Retail_Ecommerce_Analytics.Report`)**:
-   * Authored in Power BI Enhanced Report format (`definition.pbir`, `pages.json`, `visual.json`).
-   * Modern `cardVisual` components used throughout (zero deprecated legacy card visuals).
-   * Strict 8px grid alignment, structured typography (Segoe UI), and brand color palette (`#0F172A` Slate Navy, `#0EA5E9` Sky Blue, `#10B981` Emerald, `#EF4444` Coral).
-
----
-
-## How to Open & Inspect the Solution
-
-1. **Clone or download this repository**:
-   ```bash
-   git clone https://github.com/federicobucayan/DTC-Project-1.git
-   ```
-2. **Open in Power BI Desktop**:
-   * Double-click **`Retail_Ecommerce_Analytics.pbip`** directly from Windows Explorer.
-   * All 8 Star Schema tables, 26 DAX measures, dropdown slicers, and 4 report pages will load automatically.
-3. **Quick Validation**:
-   * Run **`scripts/Validate_Report.bat`** to execute the Microsoft PBIR validator and verify that all visual containers and schemas have **0 errors**.
-4. **Offline PDF Export**:
-   * Open **[Retail_Ecommerce_Analytics_PBI_PDF.pdf](./Retail_Ecommerce_Analytics_PBI_PDF.pdf)** to view full-resolution, multi-page exports of every tab.
-
----
-
-## 4-Page Report Overview
-
-### Page 1: Executive Omnichannel Summary (Archetype: *Executive Pulse*)
-* **Top KPI Strip**: Net Sales ($69.1M), Gross Margin % (24.6%), Transactions (642K), AUR ($41.20), Online Penetration (45.3%).
-* **Visuals**:
-  * *Monthly Net Sales vs Prior Year*: Dual-line trend tracking seasonality and YoY revenue movement.
-  * *Net Sales by Channel*: Donut chart illustrating omnichannel volume across Store, Website, Mobile App, Amazon, and Mercado Libre.
-  * *Net Sales by Category*: Ranked horizontal bar chart highlighting top product divisions.
-  * *Omnichannel Matrix*: Detailed breakdown of units, revenue, and gross profit by channel.
-
-### Page 2: E-Commerce & Customer Dynamics (Archetype: *Analytical Canvas*)
-* **Top KPI Strip**: Active Customers (5,001), AOV ($107.66), Repeat Purchase Rate (99.8%), E-Commerce Sales ($31.4M).
-* **Visuals**:
-  * *Revenue by Loyalty Segment*: Performance contribution from Gold, Silver, and Bronze tiers.
-  * *Customer Preferred Channel*: Distribution of shopping habits across channels.
-  * *Customer Demographics & Regional Split*: Revenue by gender and top metropolitan markets.
-
-### Page 3: Category & Merchandising Performance (Archetype: *Comparative Benchmark*)
-* **Top KPI Strip**: Total SKUs (200), Average Unit Retail ($41.20), Total Units Sold (1.68M), Top Category Share.
-* **Visuals**:
-  * *Margin % vs Sales Volume Matrix*: Cross-evaluating department profitability against volume.
-  * *Category & Brand Ranking Table*: Comprehensive performance matrix with conditional data bars.
-  * *Promotional Discount Impact*: Evaluating discount depth and unit movement.
-
-### Page 4: Inventory Health & Replenishment Monitor (Archetype: *Operational Monitor*)
-* **Top KPI Strip**: Current Stock On Hand (1.5M units), Inventory Valuation ($39.0M), Stock-to-Sales Ratio (0.89), Out-of-Stock Risk SKUs.
-* **Visuals**:
-  * *Stock On Hand by Category*: Allocation of physical inventory across merchandise divisions.
-  * *Inventory by Store Geography*: Regional stock distribution across retail hubs.
-  * *Replenishment Stock Status*: Granular SKU-level table displaying stock-on-hand, reorder points, and safety stock flags.
+Beyond saving time, this approach offers three practical benefits for business teams:
+* Fewer Human Errors: Automated checks catch mistakes early, such as broken formulas or misaligned charts, before anyone sees the report.
+* Easy Team Collaboration: The dashboard is saved as open text files instead of a locked binary file, making it easy to track changes, review updates, and collaborate using GitHub.
+* Reusable for Future Projects: The same prompts and guidance can be applied to new datasets or other departments in minutes, turning days of work into quick turnaround tasks.
 
 ---
 
 ## Tech Stack & Tooling
 
-* **Business Intelligence Platform**: Microsoft Power BI Desktop (Developer Mode `.pbip`, TMDL, PBIR).
-* **Agentic AI Assistant**: Google Antigravity (Advanced Agentic AI pair programmer).
-* **AI Customizations & Runbooks**: Microsoft Skills for Fabric (`skills-for-fabric` v0.3.16).
-* **MCP Server**: Microsoft Power BI Modeling MCP (`@microsoft/powerbi-modeling-mcp`).
-* **Validation & Desktop Bridge**: `@microsoft/powerbi-report-authoring-cli`, `@microsoft/powerbi-desktop-bridge-cli`.
-* **Data Source**: Google Dataset Search (Omnichannel Retail & E-Commerce dataset, custom curated and enhanced).
+Google Antigravity
+The primary AI coding assistant that orchestrated the project. Antigravity read the raw data files, interpreted the business requirements, wrote the underlying code, and ran automated quality checks.
+
+Microsoft Power BI Modeling Tools
+Tools provided by Microsoft that allow AI assistants to build and modify Power BI data models directly in code, without needing to click through the user interface.
+
+Microsoft Skills for Fabric
+A set of best-practice guides created by Microsoft. These taught the AI assistant how to structure data tables cleanly, follow proven dashboard layout patterns, and choose accessible color themes.
+
+Power BI Developer Mode (.pbip)
+A modern Power BI format that saves reports as open, readable text files. This open format allows AI assistants to build and edit reports directly.
+
+Microsoft Validation Tools
+Automated utilities that test the report files against Microsoft standards, confirming that the finished dashboard opens smoothly with zero errors.
+
+Google Dataset Search
+The public data search engine used to find the initial retail records, which were then customized and scaled to reflect real-world business volume.
 
 ---
 
-## Repository File Guide
+## How to Open and View the Solution
 
-```
-DTC Project 1/
-├── Retail_Ecommerce_Analytics.pbip           # Main Power BI Project file (Developer Mode)
-├── Retail_Ecommerce_Analytics_PBI_PDF.pdf    # Full-resolution multi-page PDF export of all 4 tabs
-├── README.md                                 # Project documentation (this file)
-├── .gitignore                                # Git ignore file
-├── datasets/                                 # Pinned raw CSV data files
-│   ├── bm_customers.csv
-│   ├── bm_inventory.csv
-│   ├── bm_promotions.csv
-│   ├── bm_sales.csv
-│   ├── bm_skus.csv
-│   └── bm_stores.csv
-├── Retail_Ecommerce_Analytics.Report/        # PBIR report layout and visual definitions
-├── Retail_Ecommerce_Analytics.SemanticModel/ # TMDL Star Schema model definitions
-├── screenshots/                              # High-resolution screenshots and individual page PDFs
-│   ├── Executive Omnichannel Summary.png / .pdf
-│   ├── E-Commerce & Customer Dynamics.png / .pdf
-│   ├── Category & Merchandising Performance.png / .pdf
-│   └── Inventory Health & Replenishment Monitor.png / .pdf
-└── scripts/                                  # Development automation and verification utilities
-    ├── Validate_Report.bat                   # Double-click script for 1-second project validation
-    ├── build_report.py                       # Programmatic PBIR report compiler
-    └── check_validation.py                   # Automated diagnostic script
-```
+1. Clone or download this repository to your computer:
+   ```bash
+   git clone https://github.com/FedericoBucayan/Retail-Ecommerce-Analytics.git
+   ```
+
+2. Open the project in Power BI Desktop:
+   Double-click Retail_Ecommerce_Analytics.pbip from Windows Explorer. All tables, calculations, filters, and report pages will load automatically.
+
+3. Run the automated quality check:
+   Double-click scripts/Validate_Report.bat to run the Microsoft validator and confirm that all report pages pass with zero errors.
+
+4. View the PDF export without Power BI:
+   Open Retail_Ecommerce_Analytics_PBI_PDF.pdf to review a full-resolution, four-page view of the completed dashboard.
 
 ---
 
-Designed and Developed by Federico Bucayan | Copyright 2026
+Designed and Developed by Federico Bucayan | 2026
